@@ -1,0 +1,96 @@
+/* ページ全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* フォームのスタイル */
+form {
+    max-width: 100%;
+    padding: 20px;
+}
+
+.service-checkbox {
+    display: flex;        /* フレックスボックスを使用し、子要素を横並びに配置 */
+    align-items: center;  /* 子要素を中央揃えにする */
+    margin-bottom: 8px;   /* 各チェックボックスの下にマージンを設定 */
+}
+
+.service-checkbox input[type="checkbox"] {
+    margin-right: 8px;    /* チェックボックスとラベルの間にスペースを設定 */
+}
+
+.vital-signs {
+  border: 2px solid #ccc;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.vital-signs legend {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-control-slider {
+  width: 100%;
+}
+
+/* フォーム内の各要素のスタイル */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+    width: calc(100% - 10px); /* 幅を100%にして、余白を考慮 */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+textarea {
+    height: 100px; /* テキストエリアの高さを指定 */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* トグルスイッチのスタイル */
+.js-switch {
+    display: none; /* 標準のチェックボックスを非表示にする */
+}
+
+.switchery {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* トグルスイッチの親要素に余白を追加 */
+.form-group:last-child {
+    margin-bottom: 0;
+}

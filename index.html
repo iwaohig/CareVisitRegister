@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>訪問記録</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
+<script charset="utf-8" src="https://static.worksmobile.net/static/wm/woff/edge/3.6/sdk.js"></script>
+</head>
+<body>
+<form id="myForm">
+
+  <div class="form-group">
+    <label for="displayNameInput">訪問担当者:</label>
+    <input type="text" id="displayNameInput" name="displayName" required readonly>
+  </div>
+
+<!--
+<div class="form-group">
+  <label for="userIdInput">LINE WORKS ID:</label>
+  <input type="text" id="userIdInput" name="userId" required readonly>
+</div>
+-->
+
+  <div class="form-group">
+    <label for="customerName">利用者:</label>
+    <input type="text" id="customerName" name="customerName" required>
+  </div>
+
+  <div class="form-group">
+    <label for="visitDate">訪問日:</label>
+    <input type="date" id="visitDate" name="visitDate" required>
+  </div>
+
+  <div class="form-group">
+    <label for="visitTime">時刻:</label>
+    <input type="time" id="visitTime" name="visitTime" required>
+  </div>
+
+<!--
+  <div class="form-group">
+    <label for="visitResult">訪問結果:</label>
+    <select id="visitResult" name="visitResult" required>
+      <option value="">選択してください</option>
+      <option value="success">成功</option>
+      <option value="pending">保留</option>
+      <option value="failed">失敗</option>
+    </select>
+  </div>
+-->
+<fieldset class="form-group" id="serviceFieldset">
+  <legend>訪問介護のサービス内容（複数選択可）</legend>
+  <div class="service-checkbox">
+    <input type="checkbox" id="serviceMealSupport" name="careService" value="食事支援">
+    <label for="serviceMealSupport">食事支援</label>
+  </div>
+  <div class="service-checkbox">
+    <input type="checkbox" id="serviceBathingSupport" name="careService" value="入浴支援">
+    <label for="serviceBathingSupport">入浴支援</label>
+  </div>
+  <div class="service-checkbox">
+    <input type="checkbox" id="serviceExcretionSupport" name="careService" value="排泄支援">
+    <label for="serviceExcretionSupport">排泄支援</label>
+  </div>
+  <div class="service-checkbox">
+    <input type="checkbox" id="serviceMobilitySupport" name="careService" value="移動支援">
+    <label for="serviceMobilitySupport">移動支援</label>
+  </div>
+  <div class="service-checkbox">
+    <input type="checkbox" id="serviceHousekeeping" name="careService" value="清掃・家事支援">
+    <label for="serviceHousekeeping">清掃・家事支援</label>
+  </div>
+  <div class="service-checkbox">
+    <input type="checkbox" id="serviceHealthManagement" name="careService" value="健康管理">
+    <label for="serviceHealthManagement">健康管理</label>
+  </div>
+  <div class="service-checkbox">
+    <input type="checkbox" id="serviceRehabilitationSupport" name="careService" value="リハビリテーション支援">
+    <label for="serviceRehabilitationSupport">リハビリテーション支援</label>
+  </div>
+  <div class="service-checkbox">
+    <input type="checkbox" id="serviceRecreationalSupport" name="careService" value="レクリエーション支援">
+    <label for="serviceRecreationalSupport">レクリエーション支援</label>
+  </div>
+  <div class="service-checkbox">
+    <input type="checkbox" id="serviceMedicationAssistance" name="careService" value="服薬">
+    <label for="serviceMedicationAssistance">服薬</label>
+  </div>
+  <div class="service-checkbox">
+    <input type="checkbox" id="serviceMedicalVisitSupport" name="careService" value="受診">
+    <label for="serviceMedicalVisitSupport">受診</label>
+  </div>
+</fieldset>
+
+
+  <div class="form-group">
+    <label for="visitDetails">訪問の詳細:</label>
+    <textarea id="visitDetails" name="visitDetails" rows="4" required></textarea>
+  </div>
+
+<fieldset class="vital-signs">
+  <legend>健康管理</legend>
+
+  <div class="form-group">
+    <label for="systolic_bp_slider">収縮期血圧（上）:</label>
+    <input type="range" id="systolic_bp_slider" name="systolic_bp_slider" min="80" max="200" class="form-control-slider">
+    <span id="systolic_bp_value">120</span> mmHg
+  </div>
+
+  <div class="form-group">
+    <label for="diastolic_bp_slider">拡張期血圧（下）:</label>
+    <input type="range" id="diastolic_bp_slider" name="diastolic_bp_slider" min="40" max="120" class="form-control-slider">
+    <span id="diastolic_bp_value">80</span> mmHg
+  </div>
+
+  <div class="form-group">
+    <label for="temperature">体温:</label>
+    <select id="temperature" name="temperature" class="form-control">
+      <!-- JavaScriptで選択肢を動的に追加 -->
+    </select>
+  </div>
+</fieldset>
+
+<fieldset class="form-group" id="medicationServicesFieldset">
+  <legend>服薬関連サービス</legend>
+
+  <div class="service-checkbox">
+    <input type="checkbox" id="medicationAssistance" name="medicationService" value="medicationAssistance">
+    <label for="medicationAssistance">服薬介助</label>
+  </div>
+
+  <div class="service-checkbox">
+    <input type="checkbox" id="medicationConfirmation" name="medicationService" value="medicationConfirmation">
+    <label for="medicationConfirmation">服薬確認</label>
+  </div>
+
+  <div class="service-checkbox">
+    <input type="checkbox" id="medicationApplication" name="medicationService" value="medicationApplication">
+    <label for="medicationApplication">薬塗布補助</label>
+  </div>
+</fieldset>
+
+
+<div class="form-group">
+  <label for="nextVisitDateTime">次回訪問予定日時:</label>
+  <input type="datetime-local" id="nextVisitDateTime" name="nextVisitDateTime" required>
+</div>
+<!--
+  <div class="form-group">
+    <label for="locationToggle">位置情報取得:</label>
+    <input type="checkbox" id="locationToggle" name="locationToggle" class="js-switch">
+  </div>
+-->
+<!-- 位置情報をフォームに追加 -->
+<input type="hidden" id="latitudeInput" name="latitude">
+<input type="hidden" id="longitudeInput" name="longitude">
+
+  <button type="button" onclick="submitForm()">送信</button>
+</form>
+<script src="woff.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
+<script>
+  var locationToggle = document.querySelector('.js-switch');
+  var switchery = new Switchery(locationToggle);
+
+  // 位置情報取得のトグルスイッチの状態が変更された時に位置情報を取得する関数
+  function getLocation() {
+    if (locationToggle.checked) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        alert("このブラウザでは位置情報の取得がサポートされていません。");
+      }
+    }
+  }
+
+  // 位置情報を表示する関数
+  function showPosition(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    // 緯度と経度をフォームに追加
+    document.getElementById('latitudeInput').value = latitude;
+    document.getElementById('longitudeInput').value = longitude;
+  }
+
+  // アクセス許可が与えられた場合に位置情報を取得するイベントリスナーを追加
+  locationToggle.addEventListener('change', getLocation);
+
+window.onload = function() {
+  var now = new Date();
+
+  // ローカルタイムゾーンのオフセットをミリ秒で取得し、UTCに変換後、日本時間(JST, UTC+9)に調整
+  var offset = now.getTimezoneOffset() * 60000; // ローカルタイムゾーンのオフセットをミリ秒で取得
+  var jstOffset = 9 * 60 * 60000; // JSTのオフセット（UTC+9）をミリ秒で計算
+  var nowJST = new Date(now - offset + jstOffset); // 現在時刻をJSTに変換
+
+  // 現在の日時（JST）をISO文字列に変換し、"YYYY-MM-DDTHH:MM"形式で取得
+  var currentDateTimeLocal = nowJST.toISOString().slice(0, 16);
+
+  // 現在の日付と時刻のフィールドに既定値を設定
+  document.getElementById('visitDate').value = currentDateTimeLocal.slice(0, 10); // "YYYY-MM-DD"部分を抽出
+  document.getElementById('visitTime').value = currentDateTimeLocal.slice(11, 16); // "HH:MM"部分を抽出
+
+  // 10日後の日時（JST）を計算し、ISO文字列に変換してから"YYYY-MM-DDTHH:MM"形式で取得
+  var nextVisitDateTimeJST = new Date(nowJST.getTime() + (10 * 24 * 60 * 60 * 1000)); // 10日後
+  var nextDateTimeLocal = nextVisitDateTimeJST.toISOString().slice(0, 16);
+
+  // 次回訪問予定日時のフィールドに既定値を設定
+  document.getElementById('nextVisitDateTime').value = nextDateTimeLocal;
+};
+</script>
+<script>
+// 収縮期血圧スライダーの値が変更されたときのイベントリスナー
+document.getElementById('systolic_bp_slider').addEventListener('input', function() {
+    // スライダーの値を取得
+    var value = this.value;
+    // 収縮期血圧の表示を更新
+    document.getElementById('systolic_bp_value').textContent = value;
+});
+
+// 拡張期血圧スライダーの値が変更されたときのイベントリスナー
+document.getElementById('diastolic_bp_slider').addEventListener('input', function() {
+    // スライダーの値を取得
+    var value = this.value;
+    // 拡張期血圧の表示を更新
+    document.getElementById('diastolic_bp_value').textContent = value;
+});
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const selectElement = document.getElementById('temperature');
+    for (let i = 35.5; i <= 41.0; i += 0.1) {
+      let option = document.createElement('option');
+      option.value = option.textContent = i.toFixed(1) + '℃';
+      // 36.5を既定値に設定
+      if (i.toFixed(1) === '36.5') {
+        option.selected = true;
+      }
+      selectElement.appendChild(option);
+    }
+  });
+</script>
+</body>
+</html>
